@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  width: 1920px;
+  height: 207px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #FAF7F2;
+  width: 1920px;
+  height: 1752px;
+}
+
+.page {
+  min-height: 100%;
+  background: #FAF7F2;
+}
+
+.top-header {
+  background: #CE2829;
+  color: white;
+  text-align: center;
+  padding: 5px 5px;
+  position: absolute;
+  top: 0px;
+}
+
+.top-header img {
+  position: absolute;
+  width: 361.93px;
+  height: 45.79px;
+  left: 780.21px;
+  top: 66.49px;
+}
+
+.top-header p{
+   position: absolute;
+   width: 361.93px;
+   height: 45.79px;
+   left: 780.21px;
+   top: 150px;
+}
+
+.content {
+  position: absolute;
+  width: 532px;
+  height: 1340.62px;
+  left: 694px;
+  top: 238px;
+  background-color: pink;
+}
+
+.group16 {
+  position: absolute;
+  width: 531px;
+  height: 107px;
+  left: 0px;
+  top: 15px;
+}
+
+.group15 {
+  position: absolute;
+  width: 531px;
+  height: 37px;
+  left: 0px;
+  top: 100px;
+}
+
+.div-link {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 4px;
+
+  position: absolute;
+  width: 182px;
+  height: 29px;
+  left: 695px;
+  top: 357px;
+}
+
+.div-link span {
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.link.active {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+

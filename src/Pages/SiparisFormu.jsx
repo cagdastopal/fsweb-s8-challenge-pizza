@@ -1,5 +1,6 @@
-import './SiparisFormu.css';
+import '/src/styles/SiparisFormu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 import React from 'react';
 
 
@@ -9,7 +10,11 @@ function SiparisFormu() {
     <>
       <header className="top-header">
         <img src= "/images/iteration-1-images/logo.svg" />
-        <p>Anasayfa - Seçenekler - Sipariş Oluştur</p>
+        <div className='div-link'>
+          <Link to="/" className='link'>Anasayfa</Link>
+          <span>-</span>
+          <Link to="/siparis" className='link active'>Sipariş</Link>
+        </div>
       </header>
 
       <main className="content">
@@ -22,7 +27,6 @@ function SiparisFormu() {
           </div>
         </div>
       </main>
-
     </>
   )
 }
