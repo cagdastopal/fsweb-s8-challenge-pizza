@@ -1,14 +1,10 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  box-sizing: border-box;
+  margin: 0;
   background: #FAF7F2;
-  width: 1920px;
-  height: 1752px;
 }
 
 .page {
@@ -198,7 +194,7 @@ width: 486px;
 height: 81px;
 position: absolute;
 left: 0px;
-top: 350px;
+top: 400px;
 }
 
 .frame9 {
@@ -214,7 +210,7 @@ width: 524px;
 height: 214px;
 position: absolute;
 left: 0px;
-top: 450px;
+top: 490px;
 }
 
 .group21 {
@@ -233,7 +229,7 @@ left: 0px;
 right: 0px;
 top: 50px;
 background: #FFFFFF;
-border: 1px solid #D9D9D9;
+border: 1px solid #FAF7F2;
 border-radius: 6px;
 }
 
@@ -270,5 +266,70 @@ height: 40px;
 display: flex;
 align-items: center;   
 justify-content: center;
-border: 1px solid #D9D9D9;
+border: 1px solid #FAF7F2;
+}
+
+.group22 {
+position: absolute;
+width: 350px;
+height: 255px;
+left: 180px;
+top: 0px;
+}
+
+.group22-1 {
+box-sizing: border-box;
+height: 193px;
+width: 350px;
+left: 0px;
+top: 0px;
+border: 1px solid #FAF7F2;
+border-radius: 6px;
+}
+
+.group22-1 h4 {
+  position: absolute;
+  left: 23px;
+  top: 30px
+}
+
+.siparis-btn {
+position: absolute;
+width: 350px;
+height: 62px;
+left: 0px;
+top: 193px;
+background: #FDC913;
+border-radius: 6px;
+}
+
+.secim-div {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 22px 22px;
+  font-size: 24px;
+  color: #666666;
+
+  position: absolute;
+  left: 0px;
+  top: 50px;
+}
+
+.toplam-div {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 22px 22px;
+  font-size: 24px;
+  color: #666666;
+
+  position: absolute;
+  left: 0px;
+  top: 100px;
+}
+
+.red {
+  color: #CE2829;
+  font-weight: 700;
 }

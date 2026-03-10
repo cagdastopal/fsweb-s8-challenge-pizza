@@ -13,7 +13,7 @@ function AnaSayfa() {
     <>
       <section class= "section1">
         <img src = "./images/iteration-1-images/home-banner.png" alt="" class="image2" />
-        <div>
+        <div className='anasayfa-div'>
           <p class="p-1">Teknolojik Yemekler</p>
           <p class="text1">fırsatı kaçırma</p>
           <p class="text2">KOD ACIKTIRIR Pizza, DOYURUR</p>

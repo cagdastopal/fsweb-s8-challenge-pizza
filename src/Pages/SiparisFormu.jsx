@@ -1,6 +1,6 @@
 import '/src/styles/SiparisFormu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import React from 'react';
 
 
@@ -24,6 +24,12 @@ function SiparisFormu() {
     "Ananas",
     "Kabak",
   ];
+
+  const history = useHistory();
+
+  const handleClick  = () => {
+    history.push("/onay");
+  }
 
   return (
     <>
@@ -74,7 +80,7 @@ function SiparisFormu() {
 
             <div className='frame10'>
               <p className='bold'>Ek Malzemeler</p>
-              <p>En Fazla 10 malzeme seçebilirsiniz. {malzemeFiyati}₺</p>
+              <p> En Fazla 10 malzeme seçebilirsiniz. {malzemeFiyati}₺</p>
             </div>
 
             <div className='frame9'>
@@ -95,6 +101,22 @@ function SiparisFormu() {
                 <p>1</p>
                 <button className='counter-btn'>+</button>
               </div>
+
+              <div className='group22'>
+                <div className='group22-1'>
+                  <h4>Sipariş Toplamı</h4>
+                  <div className='secim-div'>
+                    <span>Seçimler</span>
+                    <span>5₺</span>
+                  </div>
+                  <div className='toplam-div red'>
+                    <span>Toplam</span>
+                    <span>110.50₺</span>
+                  </div>
+                </div>
+                <button className='siparis-btn' onClick={handleClick}>SİPARİŞ VER</button>
+              </div>
+
             </div>
           </form>
         </section>
