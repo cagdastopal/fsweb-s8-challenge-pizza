@@ -1,14 +1,11 @@
 import '/src/styles/SiparisFormu.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useHistory } from "react-router-dom";
-import React from 'react';
-
-
-function SiparisFormu() {
+import { useState } from 'react';
 
   const pizzaFiyati = 85.5;
   const malzemeFiyati = 5;
-    const malzemeler = [
+  const malzemeler = [
     "Pepperoni",
     "Sosis",
     "Kanada Jambonu",
@@ -25,12 +22,56 @@ function SiparisFormu() {
     "Kabak",
   ];
 
+function SiparisFormu() {
+
+  const [sayi, setSayi] = useState(1);
+  const [boyut, setBoyut] = useState("");
+  const [hamur, setHamur] = useState("");
+  const [seciliMalzeme, setSeciliMalzeme] = useState([]);
+  const [not, setNot] = useState("");
   const history = useHistory();
 
   const handleClick  = () => {
-    history.push("/onay");
+      history.push("/onay");
   }
 
+  const arttir = (event) => {
+    event.preventDefault();
+    setSayi(sayi + 1);
+  }
+
+  const azalt = (event) => {
+    event.preventDefault();
+    if(sayi > 1){
+      setSayi(sayi - 1);
+    }
+  }
+
+  const handleSelect = (event) => {
+    setBoyut(event.target.value);
+  }
+
+  const handleOptionChange = (event) => {
+    setHamur(event.target.value);
+  }
+
+  const handleCheckBoxChange = (event) => {
+
+    const { value, checked } = event.target;
+
+    if (checked) {
+      setSeciliMalzeme([...seciliMalzeme, value]);
+    } else {
+      setSeciliMalzeme(seciliMalzeme.filter((item) => item !== value));
+    }
+  }
+
+  const handleNotChange = (event) => {
+    setNot(event.target.value);
+  }
+
+  const formGecerli = boyut !== "" && hamur !== "" && seciliMalzeme.length >= 4 && seciliMalzeme.length <= 10 && not !== "";
+  
   return (
     <>
       <header className="top-header">
@@ -59,47 +100,47 @@ function SiparisFormu() {
           <form>
             <div className='group20'>
               <div className='group18'>
-                <p className='bold'>Boyut Seç</p>
+                <p className='bold'>Boyut Seç {boyut === "" && <span style={{ color: "red"}}> * </span>}</p> 
                 <div className='group17'>
-                  <label className="radio-feature"> <input type="radio" name="boyut" value="kucuk" /> Küçük </label>
-                  <label className="radio-feature"> <input type="radio" name="boyut" value="orta" /> Orta </label>
-                  <label className="radio-feature"> <input type="radio" name="boyut" value="buyuk" /> Büyük </label>
+                  <label className="radio-feature"> <input type="radio" name="boyut" value="Küçük" checked={boyut === "Küçük"} onChange={handleSelect}/>Küçük</label>
+                  <label className="radio-feature"> <input type="radio" name="boyut" value="Orta" checked={boyut === "Orta"} onChange={handleSelect}/>Orta</label>
+                  <label className="radio-feature"> <input type="radio" name="boyut" value="Büyük" checked={boyut === "Büyük"} onChange={handleSelect}/>Büyük</label>
                 </div>
               </div>
 
               <div className='group19'>
-                  <p className='bold'>Hamur Seç</p>
-                  <select defaultValue="">
+                  <p className='bold'>Hamur Seç {hamur === "" && <span style={{ color: "red"}}> * </span>}</p>
+                  <select defaultValue="" onChange={handleOptionChange}>
                     <option value="" disabled>Hamur Kalınlığı</option>
-                    <option value="ince">İnce</option>
-                    <option value="orta">Orta</option>
-                    <option value="kalin">Kalın</option>
+                    <option value="İnce">İnce</option>
+                    <option value="Orta">Orta</option>
+                    <option value="Kalın">Kalın</option>
                   </select>
                 </div>
             </div>
 
             <div className='frame10'>
               <p className='bold'>Ek Malzemeler</p>
-              <p> En Fazla 10 malzeme seçebilirsiniz. {malzemeFiyati}₺</p>
+              <p> En az 4, en fazla 10 malzeme seçebilirsiniz. {malzemeFiyati}₺ {(seciliMalzeme.length < 4 || seciliMalzeme.length > 10) && <span style={{ color: "red", fontWeight: "bold" }}> * </span>}</p>
             </div>
 
             <div className='frame9'>
               {
               malzemeler.map((malzeme, index) => (
-                <label key={index}><input type="checkbox" />{malzeme}</label>
+                <label key={index}><input type="checkbox" value={malzeme} onChange={handleCheckBoxChange}/>{malzeme}</label>
               ))}
             </div>
 
             <div className='group21'>
-              <p className='bold'>Sipariş Notu</p>
-              <textarea className = "textarea1" placeholder="Siparişine eklemek istediğin bir not var mı?"></textarea>
+              <p className='bold'>Sipariş Notu {not === "" && <span style={{ color: "red"}}> Boş Bırakılamaz! </span>}</p>
+              <textarea className = "textarea1" placeholder="Siparişine eklemek istediğin bir not var mı?" onChange={handleNotChange}></textarea>
             </div>
 
             <div className='group24'>
               <div className='group23'>
-                <button className='counter-btn'>-</button>
-                <p>1</p>
-                <button className='counter-btn'>+</button>
+                <button className='counter-btn' onClick={azalt}>-</button>
+                <p>{sayi}</p>
+                <button className='counter-btn' onClick={arttir}>+</button>
               </div>
 
               <div className='group22'>
@@ -107,14 +148,14 @@ function SiparisFormu() {
                   <h4>Sipariş Toplamı</h4>
                   <div className='secim-div'>
                     <span>Seçimler</span>
-                    <span>5₺</span>
+                    <span>{(seciliMalzeme.length)*5}₺</span>
                   </div>
                   <div className='toplam-div red'>
                     <span>Toplam</span>
-                    <span>110.50₺</span>
+                    <span>{((seciliMalzeme.length)*5+85.5)*sayi}₺</span>
                   </div>
                 </div>
-                <button className='siparis-btn' onClick={handleClick}>SİPARİŞ VER</button>
+                <button className='siparis-btn' onClick={handleClick} disabled={!formGecerli}>SİPARİŞ VER</button>
               </div>
 
             </div>
